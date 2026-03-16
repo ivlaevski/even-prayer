@@ -1,0 +1,18 @@
+{
+  "package_id": "com.vlaevski.even_prayer",
+  "edition": "202603",
+  "name": "even-prayer",
+  "version": "1.0.0",
+  "min_app_version": "0.1.0",
+  "tagline": "Pray through today’s needs from your G2 glasses",
+  "description": "Even Prayer lets you browse and pray through a list of daily needs from your G2 glasses, marking each as prayed while keeping your credentials and configuration on the phone.",
+  "author": "Ivan Vlaevski",
+  "entrypoint": "index.html",
+  "permissions": {
+    "network": [
+      "evenhub.evenrealities.com",
+      "rmbhvsktnsrrzwiynajq.supabase.co"
+    ]
+  }
+}
+
