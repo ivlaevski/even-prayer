@@ -225,7 +225,7 @@ export class EvenPrayerClient {
 
     const total = this.ui.needs.length;
     const indexLabel = `[${this.ui.selectedIndex + 1} of ${total}]`;
-    const owner = need.owner || 'Unknown';
+    const owner = need.profile.name || 'Unknown';
     const footer = `Scroll to change needs. Tap to mark "Prayed (${need.prayedCount})"`;
 
     await this.bridge.rebuildPageContainer(
@@ -262,7 +262,7 @@ export class EvenPrayerClient {
             yPosition: 32,
             width: 576,
             height: 224,
-            content: need.text,
+            content: need.description,
             isEventCapture: 1,
           }),
           // footer

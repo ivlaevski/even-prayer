@@ -24,8 +24,7 @@ async function callApi<T>(
     const text = await res.text();
     throw new Error(`API error ${res.status}: ${text}`);
   }
-
-  appendEventLog(`result: ${JSON.stringify(await res.json())}`);
+ 
   return (await res.json()) as T;
 }
 
@@ -34,11 +33,20 @@ export async function fetchTodayNeeds(
 ): Promise<PrayerNeed[]> {
   const raw = await callApi<any[]>(config, '/', { method: 'GET' });
   return raw.map((item) => ({
-    id: String(item.id ?? item.prayer_id ?? ''),
-    owner: String(item.owner ?? item.author ?? 'Unknown'),
-    text: String(item.text ?? item.body ?? ''),
+    id: String(item.id ?? ''),
+    profile: {
+      id: String(item.profile.id ?? ''),
+      name: String(item.profile.name ?? 'Unknown'),
+    },
+    title: String(item.title ?? 'Unknown'),
+    description: String(item.description ?? 'Unknown'),
+    creation_date: String(item.creation_date ?? 'Unknown'),
+    user_id: String(item.user_id ?? 'Unknown'),
+    answer: String(item.answer ?? 'Unknown'),
+    priority: Number(item.priority ?? 0),
+    user_has_prayed: Boolean(item.user_has_prayed ?? false),
     prayedCount: typeof item.prayed_count === 'number' ? item.prayed_count : 0,
-  }));
+  })).sort((a, b) => a.priority - b.priority);
 }
 
 export async function markNeedPrayed(
