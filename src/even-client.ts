@@ -355,6 +355,11 @@ export class EvenPrayerClient {
         }
         return;
       }
+
+      if (eventType === OsEventTypeList.DOUBLE_CLICK_EVENT) {
+        await this.renderMainMenu();
+        return;
+      }
     }
 
     if (this.ui.view === 'error') {
