@@ -25,6 +25,7 @@ async function callApi<T>(
     throw new Error(`API error ${res.status}: ${text}`);
   }
 
+  appendEventLog(`result: ${JSON.stringify(await res.json())}`);
   return (await res.json()) as T;
 }
 
