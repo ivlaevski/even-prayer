@@ -150,7 +150,7 @@ export class EvenPrayerClient {
             yPosition: 10,
             width: 576,
             height: 32,
-            content: 'EvenPublisher',
+            content: 'EvenPrayer for https://prayerjournal.eu/',
             isEventCapture: 0,
           }),
           new TextContainerProperty({
